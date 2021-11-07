@@ -1,0 +1,36 @@
+// .book-details {
+//   background-color: darken($clr1, 2);
+//   border-radius: 5px;
+//   width: 80vw;
+//   height: 80vh;
+//   font-size: 14px;
+
+//   .header {
+//     border-bottom: 1px solid $clr2;
+//     padding: 25px;
+//     height: 40px;
+//     display: grid;
+//     font-size: 2em;
+//     place-content: center;
+//   }
+// }
+
+.book-img {
+  width: 200px;
+  align-self: center;
+  margin-bottom: 1em;
+}
+
+.detail-item-container {
+  min-height: 35px;
+  label {
+    width: 120px;
+  }
+
+  .MuiInput-root {
+    width: 300px;
+  }
+
+  display: flex;
+  margin-bottom: 5px;
+}

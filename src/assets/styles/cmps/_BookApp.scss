@@ -1,0 +1,33 @@
+.book-app {
+  .filter-container {
+    max-width: 300px;
+  }
+  .book-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .book-preview {
+    background-color: #133152;
+    margin-inline-end: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    max-width: 180px;
+    padding: 20px;
+    img {
+      margin-bottom: 5px;
+    }
+
+    .book-price {
+      font-size: 0.8em;
+      color: $clr3;
+    }
+
+    &:hover {
+      background-color: $clr5;
+      // background-color: rgb(230, 189, 189);
+    }
+
+    transition: background-color 0.2s;
+  }
+}

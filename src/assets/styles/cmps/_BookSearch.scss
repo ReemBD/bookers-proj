@@ -1,0 +1,39 @@
+.book-search {
+  flex-grow: 10;
+  max-width: 300px;
+  position: relative;
+  .MuiInput-root {
+    background: $clr2;
+  }
+  .MuiInput-input {
+    color: #212121;
+  }
+}
+
+.book-search-dropdown {
+  background-color: $clr1;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  &-opt {
+    padding: 10px 10px;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($clr1, 3);
+    }
+  }
+
+  .book-opt-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .add-book-btn {
+    &:hover {
+      color: darken(#fff, 25);
+    }
+    transition: color .2s;
+  }
+}

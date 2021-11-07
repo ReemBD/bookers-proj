@@ -1,0 +1,15 @@
+.book-filter {
+  .filter-unit {
+    display: flex;
+    align-items: center;
+    & > label {
+      width: 120px;
+    }
+  }
+  .action-btns {
+    margin-top: 15px;
+    *+*{
+      margin-inline-start: .8em;
+    }
+  }
+}
