@@ -5,9 +5,9 @@ import { FC, ReactNode } from "react"
 interface Props extends ModalProps {
     title: string
 }
-export const BookersModal: FC<Props> = ({ children, title, ...rest }) => {
+export const BookersModal: FC<Props> = ({ children, title, className, ...rest }) => {
     return <Modal disableAutoFocus  {...rest}>
-        <div className="modal-content center-abs main-layout modal-layout">
+        <div className={`modal-content center-abs main-layout modal-layout ${className}`}>
             <div className="modal-header">
                 {title}
             </div>

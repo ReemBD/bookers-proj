@@ -53,8 +53,13 @@
 }
 
 .modal-layout {
-  & > *:not(.header) {
+  & > *:not(.modal-header) {
     // grid-column: 2;
     padding: 10px 50px;
   }
+  
+}
+
+.login-and-search-layout {
+  width: 300px !important;
 }

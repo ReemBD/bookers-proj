@@ -11,6 +11,7 @@ import { RegisterOptions, useForm } from "react-hook-form"
 import { PublishedDateField } from "cmps/book-details/cmps/detail-item/cmps/published-date-field"
 import { BookersButton } from "cmps/base/bookers-button"
 import { BookersModal } from "cmps/base/bookers-modal"
+import { useUpdateEffect } from "lib/hooks/useUpdateEffect"
 
 export type BookEditFieldname = 'subtitle' | 'authors' | 'publishedDate' | 'thumbnail' | 'id' | 'title'
 interface FormField {
@@ -28,7 +29,6 @@ export const BookDetails: FC = () => {
     const [book, setBook] = useState<Book | null>(null)
     const { register, watch, setValue, formState, handleSubmit } = useForm()
     const [isEditting, toggleIsEditting] = useToggle(false)
-    console.log('formState: ', formState)
     useEffect(() => {
         (async () => {
             try {
@@ -43,12 +43,17 @@ export const BookDetails: FC = () => {
             }
         })()
 
-        console.log('bookdetails mounted')
     }, [bookId])
 
+    useEffect(() => {
+        console.log('errors: ', formState.errors)
+    }, [formState.errors])
+
+
     const onSubmit = useCallback(async (data: any) => {
-        const updatedBook = { ...book, ...data }
-        updateBook(updatedBook)
+        const newBook = { ...book, ...data }
+        setBook(newBook)
+        updateBook(book as Book)
         toggleIsEditting()
     }, [book])
 
@@ -62,7 +67,6 @@ export const BookDetails: FC = () => {
     }, [bookId])
 
     const onChangePublishedDate = useCallback((newVal) => {
-        console.log('newVal: ', newVal)
         setValue('publishedDate', newVal)
     }, [setValue])
 
@@ -85,13 +89,14 @@ export const BookDetails: FC = () => {
             editable: boolean
         } = {
             isEditting,
+            txt: (book!)[fieldname],
             label: fieldname,
             editable: !nonEditableFields.includes(fieldname)
         }
+        console.log('newProps')
         if (isEditting) props = { ...props, ...register(fieldname, options) }
-        if (!isEditting) props.txt = (book!)[fieldname]
         return props
-    }, [formState, isEditting])
+    }, [book, isEditting])
 
 
     if (!book) return <Loader />
@@ -107,8 +112,10 @@ export const BookDetails: FC = () => {
             </div>
             <form className={`book-edit-form ${!isEditting && 'view-mode'}`} onSubmit={handleSubmit(onSubmit)}>
                 {/* {formFields.map(({ name, options, editable }) => <DetailItem key={name} editable={editable} {...getDetailItemProps(name, options)} />)} */}
-                <DetailItem {...getDetailItemProps('id', {})} />
-                <DetailItem {...getDetailItemProps('title', {})} />
+                <DetailItem  {...getDetailItemProps('id', {})} />
+                <DetailItem  {...getDetailItemProps('title', {
+                    required: true
+                })} />
                 <DetailItem {...getDetailItemProps('subtitle', {})} />
                 <DetailItem {...getDetailItemProps('authors', {})} />
                 <PublishedDateField register={register} isEditting={isEditting} value={watch('publishedDate')} onChange={onChangePublishedDate} />

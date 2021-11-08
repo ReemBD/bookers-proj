@@ -1,13 +1,18 @@
 .book-search {
   flex-grow: 10;
+  min-width: 250px;
   max-width: 300px;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   .MuiInput-root {
     background: $clr2;
   }
   .MuiInput-input {
     color: #212121;
   }
+.book-search-input {
+}
 }
 
 .book-search-dropdown {
@@ -34,6 +39,6 @@
     &:hover {
       color: darken(#fff, 25);
     }
-    transition: color .2s;
+    transition: color 0.2s;
   }
 }

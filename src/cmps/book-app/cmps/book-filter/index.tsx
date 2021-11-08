@@ -9,13 +9,15 @@ import { FC, memo, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { bookService } from "services/bookService";
+
 interface Props {
 
 }
+
 export const BookFilter: FC<Props> = memo(() => {
     const navigate = useNavigate()
     const { bookFilter, setBookFilter, loadBooks } = useBooks()
-    const { register, setValue, getValues, watch, handleSubmit } = useForm({ defaultValues: bookFilter })
+    const { register, setValue, getValues, reset,watch, handleSubmit } = useForm({ defaultValues: bookFilter })
 
 
     const onSubmit = (data: IBookFilter) => {
@@ -25,6 +27,7 @@ export const BookFilter: FC<Props> = memo(() => {
     }
 
     const onResetFilter = useCallback(() => {
+        reset(bookService.getEmptyBookFilter())
         setBookFilter(bookService.getEmptyBookFilter())
     }, [])
 

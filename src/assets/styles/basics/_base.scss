@@ -9,7 +9,7 @@ html {
   line-height: 20px;
   color: $clr2;
   scroll-behavior: smooth;
-  font-family: Poppings, 'Segoe UI', sans-serif;
+  font-family: Poppins, 'Segoe UI', sans-serif;
   font-size: 14px;
   @media (min-width: 800px) {
     font-size: 16px;
@@ -86,6 +86,11 @@ ul {
   }
 }
 
+.MuiTextField-root .MuiInputLabel-root {
+  color: #fff;
+}
+
+.MuiTextField-root .MuiInputBase-root,
 .MuiInput-root {
   background-color: #212e3c;
   input {

@@ -8,25 +8,24 @@ import { AppHeader } from './cmps/base/app-header';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { BookFilter } from 'cmps/book-app/cmps/book-filter';
+import { Homepage } from 'views/Homepage';
+import { LoginSignup } from 'views/LoginSignup';
+import { bookersToast } from 'lib/hooks/bookersToast';
+import { ModalPortal } from 'cmps/base/modal-portal';
 
 function App() {
   const { bookMsg } = useBooks()
   useEffect(() => {
     if (bookMsg.type) {
 
-      (toast as any)[bookMsg.type](bookMsg.content, {
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      })
+      bookersToast[bookMsg.type](bookMsg.content)
     }
   }, [bookMsg])
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Router>
         <div className="App">
+          <ModalPortal/>
           <Toaster />
           <AppHeader />
           <div className="main-container">
@@ -35,6 +34,8 @@ function App() {
                 <Route path=":bookId" element={<BookDetails />} />
                 <Route path="filter" element={<BookFilter />} />
               </Route>
+              <Route path="/enter" element={<LoginSignup />} />
+              <Route path="/" element={<Homepage />} />
             </Routes>
           </div>
         </div >

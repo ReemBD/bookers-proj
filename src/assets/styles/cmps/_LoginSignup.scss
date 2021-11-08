@@ -1,0 +1,41 @@
+.login-signup {
+  padding-top: 30px;
+}
+
+.login-form {
+  font-size: 14px;
+  .MuiTextField-root.login-signup-form-field {
+    margin-bottom: 10px;
+    // height: 40px;
+  }
+  .btn {
+    height: 40px;
+  }
+}
+
+.signup-modal-body {
+  display: grid;
+  place-content: center;
+}
+
+.btn-google {
+  display: flex;
+  color: #08090a;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  font-family: Poppins;
+  cursor: pointer;
+
+}
+.signup-suggestion {
+  margin-block: 20px;
+}
+
+.btn-signup-suggestion {
+  color: $clr3;
+  cursor: pointer;
+  &:hover {
+    color: lighten($clr3, 10);
+  }
+  transition: color 0.2s;
+}

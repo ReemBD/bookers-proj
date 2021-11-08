@@ -24,7 +24,9 @@
 .detail-item-container {
   min-height: 35px;
   label {
+    font-family: Poppins-Bold;
     width: 120px;
+    text-transform: capitalize;
   }
 
   .MuiInput-root {

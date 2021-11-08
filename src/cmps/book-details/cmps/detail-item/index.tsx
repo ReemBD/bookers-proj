@@ -1,7 +1,7 @@
 import { FC, forwardRef, memo, useMemo } from "react";
-import Input from '@mui/material/Input';
 import { Book } from "lib/models/Book.interface";
 import { BookEditFieldname } from "views/BookDetails";
+import { BookersInput } from "cmps/base/bookers-input";
 
 interface Props {
     label: string
@@ -9,14 +9,15 @@ interface Props {
     [rest: string]: any
 }
 
-export const DetailItem: FC<Props> = memo(forwardRef(({ label, txt, editable, isEditting, ...inputAttrs }, inputRef) => {
+export const DetailItem: FC<Props> = forwardRef(({ label, txt, error, editable, isEditting, ...inputAttrs }, inputRef) => {
 
+    console.log('rendering')
     const DetailField = useMemo(() => {
-        return isEditting ? <Input disabled={!editable} color="secondary" ref={inputRef} type="text" {...inputAttrs} /> : <span>{txt}</span>
+        return isEditting ? <BookersInput disabled={!editable} color="secondary" ref={inputRef} type="text" {...inputAttrs} /> : <span>{txt}</span>
     }, [isEditting])
 
     return <div className="detail-item-container">
         <label htmlFor={inputAttrs.id}>{label}:</label>
         {DetailField}
     </div>
-}))
+})

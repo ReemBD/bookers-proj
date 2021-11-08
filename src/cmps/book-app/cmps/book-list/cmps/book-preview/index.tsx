@@ -15,7 +15,6 @@ export const BookPreview: FC<Props> = memo(({ book }) => {
         switch (currencyCode) {
             case 'USD':
                 return '$'
-                break;
             case 'EUR':
                 return '€'
             case 'ILS':

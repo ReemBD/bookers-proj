@@ -1,7 +1,11 @@
 
+.MuiModal-root {
+}
+
 .modal-content {
   background-color: darken($clr1, 2) !important;
   border-radius: 5px;
+  width: min(500px,100vw);
   // width: 80vw;
   font-size: 14px;
 }
@@ -9,7 +13,7 @@
 .modal-header {
   border-bottom: 1px solid $clr2;
   margin-bottom: .8em;
-  padding: 25px;
+  padding-block: 30px;
   height: 40px;
   display: grid;
   font-size: 2em;
