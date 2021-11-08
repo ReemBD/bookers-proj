@@ -14,10 +14,6 @@ export const useUserData = () => {
         const user = await userService.getUserById(authUser.uid);
         setUser(user);
       })();
-      //   const ref = firestore.collection('users').doc(user.uid);
-      //   unsubscribe = ref.onSnapshot((doc) => {
-      //     setUsername(doc.data()?.username);
-      //   });
     } else {
       setUser(null);
     }

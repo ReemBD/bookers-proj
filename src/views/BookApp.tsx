@@ -16,14 +16,9 @@ export const BookApp: FC<Props> = ({ children }) => {
     const { books, bookFilter, setBookFilter, loadBooks } = useBooks()
 
     useEffect(() => {
-        (async () => {
-            loadBooks(bookService.getEmptyBookFilter())
-        })()
+        loadBooks(bookService.getEmptyBookFilter())
     }, [])
-
-    useEffect(() => {
-        console.log({ bookFilter })
-    }, [bookFilter])
+    
     const debouncedLoadBooks = useCallback(debounce((bookFilter) => {
         loadBooks(bookFilter)
     }, 250), [])

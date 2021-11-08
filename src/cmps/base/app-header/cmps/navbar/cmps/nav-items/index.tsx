@@ -3,8 +3,7 @@ import { auth } from "lib/firebase"
 import { useUserData } from "lib/hooks/useUserData"
 import { INavItem } from "lib/models/NavItem.interface"
 import { BookersUser } from "lib/models/User.interface"
-import { FC, useRef, useState } from "react"
-import { useAuthState } from "react-firebase-hooks/auth"
+import { FC, useRef } from "react"
 import { NavItem } from "./cmps/nav-item"
 
 export const NavItems = () => {

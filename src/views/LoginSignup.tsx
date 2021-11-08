@@ -16,15 +16,12 @@ import { cloudinaryService, CLOUD_NAME } from "services/cloudinaryService";
 import AddIcon from '@mui/icons-material/Add';
 import { Image } from 'cloudinary-react'
 import { passwordValidations, usernameValidations } from "services/validationService";
-import { InputError } from "cmps/base/input-error";
 import { useNavigate } from "react-router";
 
 export const LoginSignup: FC<{}> = () => {
     const [user] = useAuthState(auth)
     const { register, handleSubmit, formState } = useForm()
     const [isSignupOpen, toggleSignupOpen] = useToggle(false)
-
-    useEffect(() => { console.log('user: ', user) }, [user])
 
     const signInWithGoogle = async () => {
         try {
@@ -36,7 +33,7 @@ export const LoginSignup: FC<{}> = () => {
 
     const onSubmitLogin = async ({ email, password }: UserCred) => {
         try {
-            const userCred: UserCred = await auth.signInWithEmailAndPassword(email, password)
+            await auth.signInWithEmailAndPassword(email, password)
         } catch (err) {
             bookersToast.error('One ore more fields are incorrect.', {
                 duration: 5000

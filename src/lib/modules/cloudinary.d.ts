@@ -1,3 +1,3 @@
 declare module 'cloudinary-react' {
-  export type CloudinaryImage = any;
+  export type Image = any;
 }
